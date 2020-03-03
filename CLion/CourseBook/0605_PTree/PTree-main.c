@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
         printf("█ 初始化空树 T ...\n");
         InitTree(&T);
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ CreateTree \n");
@@ -25,23 +25,23 @@ int main(int argc, char* argv[]) {
         printf("█ 按先序序列创建树 T ...\n");
         CreateTree(&T, "TestData_T.txt");
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ TreeDepth \n");
     {
         printf("█ 树 T 的深度为：%d \n", TreeDepth(T));
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
-    printf("████████ PrintGraph \n");
+    printf("████████ PrintTree \n");
     {
         printf("█ 按树的结构打印树 T ...\n");
         printf("█ T = \n");
-        PrintGraph(T);
+        PrintTree(T);
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ PreOrderTraverse \n");
@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
         printf("█ 前序遍历树 T = ");
         PreOrderTraverse(T, PrintElem);
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ PostOrderTraverse \n");
@@ -57,7 +57,7 @@ int main(int argc, char* argv[]) {
         printf("█ 后序遍历树 T = ");
         PostOrderTraverse(T, PrintElem);
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ LevelOrderTraverse \n");
@@ -65,7 +65,7 @@ int main(int argc, char* argv[]) {
         printf("█ 层序遍历树 T = ");
         LevelOrderTraverse(T, PrintElem);
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ Value \n");
@@ -73,7 +73,7 @@ int main(int argc, char* argv[]) {
         TElemType e = 'F';
         printf("█ 结点 %c 的值为 %c\n", e, Value(T, e));
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ Assign \n");
@@ -83,16 +83,16 @@ int main(int argc, char* argv[]) {
         printf("█ 将结点 %c 赋值为 %c ...\n", e, value);
         Assign(&T, e, value);
         printf("█ T = \n");
-        PrintGraph(T);
+        PrintTree(T);
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ Root \n");
     {
         printf("█ T 的根结点为 %c\n", Root(T));
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ Parent \n");
@@ -100,7 +100,7 @@ int main(int argc, char* argv[]) {
         TElemType e = 'E';
         printf("█ 结点 %c 的双亲为：%c \n", e, Parent(T, e));
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ ChildCount \n");
@@ -108,7 +108,7 @@ int main(int argc, char* argv[]) {
         TElemType e = 'X';
         printf("█ 结点 %c 有 %d 个孩子\n", e, ChildCount(T, e));
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ Child \n");
@@ -117,7 +117,7 @@ int main(int argc, char* argv[]) {
         int i = 2;
         printf("█ 结点 %c 的第 %d 个孩子结点值为：%c \n", e, i, Child(T, e, i));
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ LeftSibling \n");
@@ -125,7 +125,7 @@ int main(int argc, char* argv[]) {
         TElemType e = 'H';
         printf("█ 结点 %c 的左兄弟为：%c\n", e, LeftSibling(T, e));
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ RightSibling \n");
@@ -133,7 +133,7 @@ int main(int argc, char* argv[]) {
         TElemType e = 'H';
         printf("█ 结点 %c 的右兄弟为：%c\n", e, RightSibling(T, e));
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ InsertChild \n");
@@ -146,14 +146,14 @@ int main(int argc, char* argv[]) {
         InitTree(&c);
         CreateTree(&c, "TestData_c.txt");
         printf("█ c = \n");
-        PrintGraph(c);
+        PrintTree(c);
         
         printf("█ 将子树 c 插入为树 T 中 %c 结点的第 %d 棵子树 ...\n", p, i);
         InsertChild(&T, p, i, c);
         printf("█ T = \n");
-        PrintGraph(T);
+        PrintTree(T);
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ DeleteChild \n");
@@ -164,9 +164,9 @@ int main(int argc, char* argv[]) {
         printf("█ 删除树 T 中 %c 结点的第 %d 棵子树 ...\n", p, i);
         DeleteChild(&T, p, i);
         printf("█ T = \n");
-        PrintGraph(T);
+        PrintTree(T);
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     
     printf("████████ ClearTree、TreeEmpty \n");
@@ -179,7 +179,7 @@ int main(int argc, char* argv[]) {
         printf("█ 清空后：");
         TreeEmpty(T) ? printf("T 为空！\n") : printf("T 不为空！\n");
     }
-    PressEnterToContinue();
+    PressEnterToContinue(debug);
     
     return 0;
 }
